@@ -1,4 +1,8 @@
 def numberOfStableArrays(zero, one, limit):
+  """ 
+      dynamic programming dp1[i][j] number of stable arrays with i ones and j zeros that end with a one
+      dynamic programming dp2[i][j] number of stable arrays with i ones and j zeros that end with a zero
+  """
   mod=10**9+7
   dp1=[[0 for i in range(zero+1)] for j in range(one+1)]
   dp2=[[0 for i in range(zero+1)] for j in range(one+1)]
