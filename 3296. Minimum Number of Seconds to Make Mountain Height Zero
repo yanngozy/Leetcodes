@@ -1,0 +1,18 @@
+def minNumberOfSeconds(self, mountainHeight, workerTimes):
+    """
+        We reduce the height by 1 each time and select the worker who will perform this task most efficiently
+    """
+
+    import heapq
+    times=[(w,1) for w in workerTimes]
+    res=0
+    heapq.heapify(times)
+    while mountainHeight>0:
+        t,i=heapq.heappop(times)
+        mountainHeight-=1
+        res=max(res,t)
+        base=2*t//(i*(i+1))
+        i+=1
+        t+=i*base
+        heapq.heappush(times,(t,i))
+    return res
