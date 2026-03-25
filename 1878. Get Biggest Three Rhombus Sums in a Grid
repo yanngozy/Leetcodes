@@ -1,0 +1,46 @@
+def getBiggestThree(grid):
+    """
+        if (i,j) are the coordinates of the right bottom apex, and c is the length then the others apex 
+        are (i-c,j-c), (i,j-2*c) and (i+c,j-c), then we sum the elements of each side
+    """
+    def sq(i,j,c,n,m):
+        # Determine if we can construct a square of length c with (i,j) at the right bottom
+        if (i-c<0) or (j-2*c<0) or (i+c>=n):
+            return False
+        return True
+
+     import copy
+    lsum=copy.deepcopy(grid)
+    rsum=copy.deepcopy(grid)
+    import heapq
+    res=[]
+    n,m=len(grid),len(grid[0])
+    for i in range(1,n):
+        if m>1:
+            rsum[i][0]+=rsum[i-1][1]
+            lsum[i][m-1]+=lsum[i-1][m-2]
+        for j in range(1,m-1):
+            rsum[i][j]+=rsum[i-1][j+1]
+            lsum[i][j]+=lsum[i-1][j-1]
+    
+    for i in range(n):
+        for j in range(m):
+            c=0
+            up,down=0,0
+            while sq(i,j,c,n,m):
+                if c>0:
+                    up+=grid[i-c][j-c]
+                    down+=grid[i+c][j-c]
+                    s=up+down+rsum[i][j-2*c]-rsum[i-c][j-c]+lsum[i+c-1][j-c-1]-lsum[i][j-2*c]
+                    s+=grid[i][j]
+                else:
+                    s=grid[i][j] 
+                c+=1
+                if s not in res:
+                    heapq.heappush(res,s)
+                    if len(res)>3:
+                        heapq.heappop(res)
+              
+        
+    return sorted(res,reverse=True)
+          
