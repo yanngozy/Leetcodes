@@ -1,0 +1,27 @@
+def minDistance(word1, word2):
+    """
+      Calculates the minimum number of operations (insert, delete, replace) to transform word1 into word2 using Dynamic Programming.
+    """
+    n=len(word1)
+    m=len(word2)
+    minop=[[0]*(m+1) for _ in range(n+1)] # minimum number of operations to transform  word1[:i] in to word2[:j]
+    # Initialization
+    for i in range(1,n+1):
+        minop[i][0]=i
+    for j in range(1,m+1):
+        minop[0][j]=j
+
+    for i in range(1, n + 1):
+        for j in range(1, m + 1):
+            if word1[i-1] == word2[j-1]:
+                minop[i][j] = minop[i-1][j-1]
+            else:
+              
+                minop[i][j] = 1 + min(
+                    minop[i-1][j-1], # Replace
+                    minop[i][j-1],   # Insert
+                    minop[i-1][j]    # Delete
+                )
+    return minop[n][m]
+# Time ans Space complexity O(n*m), space complexity can be improved to O(min(n,m))
+  
