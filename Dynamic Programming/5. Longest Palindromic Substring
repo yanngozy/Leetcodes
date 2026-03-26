@@ -21,3 +21,4 @@ ef longestPalindrome(s):
                 if length<i-j+1:
                     length,res=i-j+1, s[j:i+1]
       return res
+# time and space complexity 0(n^2)
