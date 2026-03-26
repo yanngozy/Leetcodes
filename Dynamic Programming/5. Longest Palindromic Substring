@@ -1,4 +1,4 @@
-ef longestPalindrome(s):
+def longestPalindrome(s):
     """
         Dynamic programming: S[i:j] is a palindrome if S[i]=S[j] and S[i+1:j-1] is a palindrome
         return: the longest palindrome in S
