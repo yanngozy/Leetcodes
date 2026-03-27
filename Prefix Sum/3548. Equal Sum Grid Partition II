@@ -1,0 +1,46 @@
+
+def rotation(self, grid):
+    # Rotate the array by 90°
+    n,m = len(grid), len(grid[0])
+    arr = [[0] * n for _ in range(m)]
+    for i in range(n):
+        for j in range(m):
+            arr[j][n-1-i] = grid[i][j]
+    return arr
+
+def canPartitionGrid(self, grid):
+    # Simply cut the grid horizontally; cutting vertically is the same as rotating the grid and then cutting it horizontally 
+    n = len(grid)
+    totsum=sum([sum(grid[i]) for i in range(n)])
+
+    for rotation in range(4):
+        nums = set([0])
+        up_sum = 0
+        n,m = len(grid),len(grid[0])
+        if n==1: # only one row
+            grid = self.rotation(grid)
+            continue
+        if m == 1:
+            for i in range(n-1):
+                up_sum += grid[i][0]
+                target = 2*up_sum-totsum
+                if target==0 or target==grid[0][0] or target==grid[i][0]:
+                    return True
+            grid = self.rotation(grid)
+            continue
+        for i in range(n-1):
+            for j in range(m):
+                nums.add(grid[i][j])
+                up_sum+= grid[i][j]
+            target = up_sum * 2 - totsum
+            if i == 0:
+                if target==0 or target==grid[0][0] or target==grid[0][m- 1]:
+                    return True
+                continue
+            if target in nums:
+                return True
+        grid = self.rotation(grid)
+    return False
+
+# Time and space complexity O(n*m)
+
