@@ -1,0 +1,21 @@
+def canPartitionGrid(grid):
+
+        n,m=len(grid), len(grid[0])
+        totalsum=sum([sum(grid[i]) for i in range(n)]) # total sum of the grid
+        upsum=0  # total sum of the upper grid
+
+        # cutting horizontally
+        for i in range(n-1):
+            upsum+=sum(grid[i])
+            if 2*upsum==totalsum: # upsum== toalsum-upsum
+                return True
+
+        # cutting vertically
+        leftsum=0
+        for j in range(m-1):
+            for i in range(n):
+                leftsum+=grid[i][j]
+            if 2*leftsum==totalsum:
+                return True
+        return False
+        
