@@ -1,0 +1,20 @@
+def maxVowels(self, s, k):
+    
+    n=len(s)
+    vowels=set(['a','e','i','o','u'])
+    curr=0 # current number of vowels in a sliding windows of k
+    res=0 # maximum value of curr
+
+    for i in range(k):
+        if s[i] in vowels:
+            curr+=1
+    res=curr
+    for i in range(k,n):
+        if s[i-k] in vowels:
+            curr-=1
+        if s[i] in vowels:
+            curr+=1
+        res=max(res,curr)
+    return res
+
+    
