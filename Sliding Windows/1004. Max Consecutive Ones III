@@ -1,0 +1,31 @@
+def longestOnes(self, nums, k):
+
+        from collections import deque
+        n=len(nums)
+        curr=0 # current streak of ones after replacing at most k zeros
+        res=0 # maximum value of curr
+        zeros=deque([]) # index of all zeros that we've replaced
+
+        for i in range(n):
+            if nums[i]: # if nums[i]==1 , increment the streak
+                curr+=1
+            else: 
+                if len(zeros)<k: # we can replace the current 0 by 1
+                    zeros.append(i)
+                    curr+=1
+                elif k==0: # we can't replace the current 0, the streak ends
+                    curr=0
+                else:  # remove the first zero that we've replaced in the streak
+                    j=zeros.popleft()
+                    curr=i-j
+                    zeros.append(i)
+
+            res=max(res,curr)
+
+        return res
+
+# Time complexity O(n), space complexity O(k)
+                    
+
+
+        
