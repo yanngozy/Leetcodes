@@ -1,0 +1,18 @@
+def productExceptSelf(nums):
+        n=len(nums)
+        left=1
+        product=[1]*n
+        # product from the left side
+        for i in range(n):
+            product[i]*=left
+            left*=nums[i]
+        # product from the right side
+        right=1
+        for i in range(n-1,-1,-1):
+            product[i]*=right
+            right*=nums[i]
+        return product
+
+# Time complexity O(n), space complexity O(1)
+
+        
