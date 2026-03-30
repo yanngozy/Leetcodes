@@ -1,0 +1,25 @@
+ def checkStrings(self, s1, s2):
+    
+         #  Logic: The constraint |i - j| is even implies that characters can only 
+         # move between positions of the same parity (Even <-> Even, Odd <-> Odd).
+         # Therefore, s1 can become s2 IF AND ONLY IF the substring of characters at even and odd positions are anagrams for both strings
+        
+        if len(s1)!=len(s2): # if s1 and s2 have different length it's impossible
+            return False
+        
+        evens=[0]*26
+        odds=[0]*26
+        for i in range(n):
+            if i%2==0: 
+                evens[ord(s1[i])-ord('a')]+=1
+                evens[ord(s2[i])-ord('a')]-=1
+            else:
+                odds[ord(s1[i])-ord('a')]+=1
+                odds[ord(s2[i])-ord('a')]-=1
+
+        for i in range(26):
+            if evens[i]!=0 or odds[i]!=0:
+                return False
+        return True
+
+# Time complexity O(n), space complexity O(1)
