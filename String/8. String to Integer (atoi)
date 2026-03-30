@@ -1,0 +1,21 @@
+def myAtoi(self, s):
+      
+        s=s.strip()
+        if len(s)==0:
+            return 0
+        m=-2**31
+        M=2**31-1
+        digits=set([str(i) for i in range(10)])
+        i=1 if s[0] in ["-","+"] else 0
+        for j in range(i,len(s)):
+            if s[j] not in digits:
+                j-=1
+                break
+        try:
+            if s[0]=="-":
+                return max(-int(s[1:j+1]),m)
+            return min(int(s[:j+1]),M)
+        except:
+            return 0
+            
+            
