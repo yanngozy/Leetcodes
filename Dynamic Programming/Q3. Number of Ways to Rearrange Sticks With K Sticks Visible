@@ -1,0 +1,26 @@
+ def rearrangeSticks(self, n, k):
+        """
+          The core of this problem lies in the observation that the tallest stick (n) acts as a "blocker."
+          If we place the tallest stick at index j (where j≥k), it will always be visible.
+          Any sticks placed after the tallest stick (n) will be hidden by it.
+          Therefore, to have exactly k visible sticks, we must ensure that exactly k−1 sticks are visible among the elements placed before index j.
+          The total count is the summation of these configurations across all possible positions j.
+        """
+        facto=[1]
+        mod=10**9+7
+        res=[[0]*min(i,k) for i in range(1,n+1)]
+        for i in range(n):
+            facto.append(facto[-1]*(i+1))
+            res[i][0]=facto[i]%mod
+            for j in range(1,len(res[i])):
+                if j==i:
+                    res[i][j]=1
+                else:
+                    res[i][j]=i*res[i-1][j]+res[i-1][j-1]
+                res[i][j]=res[i][j]%mod
+        
+        return res[n-1][k-1]
+
+# Time and space complexity O(n*k)
+
+        
