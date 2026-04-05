@@ -1,0 +1,32 @@
+def maxPoints(points):
+    """
+    Finds the maximum number of points that lie on the same straight line.
+    
+    Strategy: 
+    Iterate through each point 'M' and treat it as an anchor. For all other 
+    points, calculate the slope relative to 'M'. Points with identical slopes 
+    relative to the same anchor are collinear.
+    """
+    n = len(points)
+    if n <= 2:
+        return n
+    
+    res = 0
+    for i, M in enumerate(points):
+        # 'dico' stores the count of points sharing the same slope with anchor M
+        dico = {}
+        for j in range(i + 1, n):
+            dx = points[j][0] - M[0]
+            dy = points[j][1] - M[1]
+            
+            if dx == 0:
+                slope = float('inf')  # Vertical line case
+            else:
+                # Standard slope formula: (y2 - y1) / (x2 - x1)
+                slope = float(dy) / dx
+            
+            dico[slope] = dico.get(slope, 0) + 1
+            # Update result: counts in dico + 1 (to include the anchor point M itself)
+            res = max(res, dico[slope] + 1)
+            
+    return res
