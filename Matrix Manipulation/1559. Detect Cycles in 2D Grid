@@ -1,0 +1,24 @@
+def containsCycle(self, grid):  
+
+        n,m = len(grid), len(grid[0])
+
+        def checkcycle(i,j,root_x,root_y,visited):
+            visited[i][j]=True
+            for x,y in [(i+1,j),(i,j+1),(i-1,j),(i,j-1)]:
+                if not (0<=x<n and 0<=y<m and grid[x][y]==grid[i][j]):
+                    continue
+                if  passed[x][y] and (x,y)!=(root_x,root_y):
+                        return True
+                elif not passed[x][y] and checkcycle(x,y,i,j,visited):
+                    return True
+            return False
+
+        visited = [[False]*m for i in range(n)] # check if we have already visited the cell
+
+        for i in range(n):
+            for j in range(m):
+                if not visited[i][j] and checkcycle(i,j,i,j,passed):
+                    return True
+
+        return False
+                
