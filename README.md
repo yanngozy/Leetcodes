@@ -22,10 +22,10 @@ I view every LeetCode challenge as a creative puzzle. My approach focuses on:
 ### 📂 Repository Structure
 Solutions are organized by topic to make navigation easy:
 
-*   `Binary Search/`
-*   `Dynamic-Programming/`
-*   `Matrix Manipulation/`
-*   `Strings/`
+*   `Binary Search`
+*   `Dynamic-Programming`
+*   `Matrix Manipulation`
+*   `Strings`
 *   *etc...*
 
 ---
