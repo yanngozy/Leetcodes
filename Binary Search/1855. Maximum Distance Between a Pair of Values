@@ -19,3 +19,5 @@ int maxDistance(vector<int>& nums1, vector<int>& nums2) {
         }
         return res;
     }
+
+# complexity O(nlog(n)) for Time and O(1) for extra space
