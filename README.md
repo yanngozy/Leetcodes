@@ -26,7 +26,7 @@ Solutions are organized by topic to make navigation easy:
 *   `Dynamic-Programming/`
 *   `Matrix Manipulation/`
 *   `Strings/`
-*   *(and so on...)*
+*   *etc...*
 
 ---
 
