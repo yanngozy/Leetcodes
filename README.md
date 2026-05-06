@@ -36,8 +36,8 @@ Solutions are organized by topic to make navigation easy:
 | :--- | :--- |
 | 🟢 **Easy** | 90 |
 | 🟡 **Medium** | 291 |
-| 🔴 **Hard** | 48 |
-| **Total** | **429** |
+| 🔴 **Hard** | 50 |
+| **Total** | **431** |
 
 ---
 
