@@ -9,7 +9,7 @@ def getBiggestThree(grid):
             return False
         return True
 
-     import copy
+    import copy
     lsum=copy.deepcopy(grid)
     rsum=copy.deepcopy(grid)
     import heapq
