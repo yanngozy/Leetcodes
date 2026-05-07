@@ -5,12 +5,12 @@ def robotSim(commands, obstacles):
         :rtype: int
         """
         def update_direction(x,d):
-            pos={
-                'N':('W','E'),
-                'S':('E','W'),
-                'E':('N','S'),
-                'W':('S','N')
-                }
+            pos = {
+                        'N':('W','E'),
+                        'S':('E','W'),
+                        'E':('N','S'),
+                        'W':('S','N')
+                  }
             return pos[x][d+2]
 
         x,y={},{} 
