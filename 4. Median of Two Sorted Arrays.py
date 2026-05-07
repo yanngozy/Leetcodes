@@ -1,11 +1,13 @@
 def median(nums1,nums2):
   """
-    We need nums1 to be smaller than nums2
-    partition the arrays such that the left halves and the right halves have the same size 
-    All the elements from the left are smaller than all the elements from the right
+     We need nums1 to be smaller than nums2
+     partition the arrays such that the left halves and the right halves have the same size 
+     All the elements from the left are smaller than all the elements from the right
   """
-    n,m=len(nums1),len(nums2)
-    imin,imax=0,n
+  
+    n,m = len(nums1),len(nums2)
+    imin,imax = 0,n
+      
     while imin<=imax:
         mid1=(imin+imax)//2
         mid2=(m+n+1)//2-mid1
