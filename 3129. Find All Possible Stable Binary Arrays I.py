@@ -9,6 +9,7 @@ def numberOfStableArrays(zero, one, limit):
   for l in range(1,limit+1):
       dp1[min(l,one)][0]=1
       dp2[0][min(l,zero)]=1
+    
   for i in range(1,one+1):
       for j in range(1,zero+1):
           dp1[i][j]=dp2[i-1][j]
@@ -21,6 +22,7 @@ def numberOfStableArrays(zero, one, limit):
               dp2[i][j]=(dp2[i][j]+dp2[i][j-1]-dp1[i][j-1-limit])%mod
           elif j>1:
               dp2[i][j]=(dp2[i][j]+dp2[i][j-1])%mod
+            
   return (dp1[one][zero]+dp2[one][zero])%mod
 
         
