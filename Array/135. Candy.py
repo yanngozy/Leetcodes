@@ -10,14 +10,12 @@ class Solution(object):
         res = 0
         indices = [ i for i in range(n) ]
         indices = sorted(indices, key = lambda x:ratings[x])
-        allocations = [0]*n
+        alloc = [0]*n
         for i in indices:
-            left, right = 0, 0
-            if i<n-1:right = allocations[i+1]+1 if ratings[i]>ratings[i+1] else 1
-            if i>0:left = allocations[i-1]+1 if ratings[i]>ratings[i-1] else 1      
-            alloc = max(left,right)
-            allocations[i] = alloc
-            res +=alloc
+            alloc[i] = 1
+            if i<n-1 and ratings[i]>ratings[i+1]: alloc[i] = alloc[i+1]+1 
+            if i>0 and ratings[i]>ratings[i-1]: alloc[i] = max(alloc[i-1]+1,alloc[i]) 
+            res +=alloc[i]
     
         return res
         
